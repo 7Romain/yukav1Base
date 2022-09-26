@@ -1,0 +1,338 @@
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+/* Style the buttons that are used to open and close the accordion panel */
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    outline: none;
+    transition: 0.4s;
+    border: #444 1px solid;
+
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active,
+.accordion:hover {
+    background-color: rgb(200, 243, 247);
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+    padding: 0 18px;
+    background-color: transparent;
+    display: none;
+    overflow: hidden;
+}
+
+.accordion:after {
+    content: '\02795';
+    /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    /* color: rgb(119, 119, 119); */
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2796";
+    /* Unicode character for "minus" sign (-) */
+}
+
+
+
+@font-face {
+    font-family: 'merienda';
+    src: url('/fonts/Merienda-Bold.woff') format('woff'),
+
+        url('/fonts/Merienda-Bold.ttf') format('truetype');
+
+}
+
+
+
+h1,
+h2 {
+    font-family: merienda, 'Courier New', Courier, monospace;
+}
+
+
+
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.logo {
+    display: flex;
+    padding: 5px;
+
+}
+
+.top {
+    display: flex;
+    justify-content: center;
+    width: 80%;
+}
+
+.banniere {
+    display: flex;
+}
+
+.titre {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+.formulaire {
+    display: flex;
+    justify-content: center;
+
+}
+
+h1 {
+    font-size: 5em;
+    padding: 0px;
+    margin: 0px;
+    background: linear-gradient(to right, red 0%, orange 20%, green 40%, teal 63%, blue 75%, purple 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: black 0.5px;
+}
+
+
+
+
+h2 {
+    display: flex;
+    padding: 0px;
+    margin: 0px;
+    justify-content: end;
+
+    font-size: 1em;
+
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+
+    height: 100%;
+    background-image: url("/images/green.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+
+button {
+    display: inline-block;
+    background-color: #046d12;
+    border-radius: 10px;
+    border: 4px double #cccccc;
+    color: #eeeeee;
+    text-align: center;
+    font-size: 15px;
+    padding: 3px;
+    width: 150px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 3px;
+}
+
+button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+button span:after {
+    content: "\00bb";
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+button:hover {
+    background-color: #4f7c55;
+}
+
+button:hover span {
+    padding-right: 25px;
+}
+
+button:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+#rechercher {
+    height: 20px;
+    display: inline-block;
+    border-radius: 10px;
+    border: 4px double #046d12;
+    text-align: center;
+    font-size: 15px;
+    padding: 3px;
+    width: 150px;
+    margin: 3px;
+
+}
+
+.loupe {
+    padding-left: 25px;
+    background: url("/images/loupe.svg") no-repeat left;
+    background-size: 20px;
+}
+
+main {
+    margin: 10px;
+    width: 100%;
+
+}
+
+footer {
+    margin: 3px;
+    position: absolute;
+    width: 100%;
+    bottom: 25px;
+    height: 10px;
+}
+
+
+#container {
+
+    min-width: 90%;
+    min-height: 100%;
+
+    position: relative;
+
+}
+
+.liste {
+    display: flex;
+    text-align: center
+}
+
+.liste>li {
+    display: inline;
+    margin: auto;
+    background-color: rgb(200, 243, 247);
+    border-radius: 10px;
+    border: 1px solid #046d12;
+    padding: 1px 10px 1px 10px;
+    width: 25%;
+    cursor: pointer;
+}
+
+
+
+.modalDialog {
+    position: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.1);
+    z-index: 99999;
+    opacity: 0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+}
+
+.modalDialog:target {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modalDialog>div {
+    width: 400px;
+    position: relative;
+    margin: 10% auto;
+    padding: 5px 20px 13px 20px;
+    border-radius: 10px;
+    background: -moz-linear-gradient(#2edbe8, #01a6b2);
+    background: -webkit-linear-gradient(#2edbe8, #01a6b2);
+    background: -o-linear-gradient(#2edbe8, #01a6b2);
+}
+
+.close {
+    background: #606061;
+    color: #ffffff;
+    line-height: 25px;
+    position: absolute;
+    right: -12px;
+    text-align: center;
+    top: -10px;
+    width: 24px;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    -moz-box-shadow: 1px 1px 3px #000;
+    -webkit-box-shadow: 1px 1px 3px #000;
+    box-shadow: 1px 1px 3px #000;
+}
+
+.close:hover {
+    background: #6ed1d8;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+
+section {
+    width: 100%;
+    display: flex;
+    margin: auto;
+
+    justify-content: center;
+}
+
+
+.photo {
+    width: 20%;
+    margin: 1px;
+    text-align: start;
+    align-items: flex-start;
+}
+
+.score {
+    width: 20%;
+    margin: 1px;
+    text-align: end;
+    align-items: flex-end;
+
+}
+
+article {
+    width: 55%;
+    margin: 1px;
+
+}

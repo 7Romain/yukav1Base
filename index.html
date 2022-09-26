@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Yuk'Essen</title>
+        <link rel="stylesheet" href="styles/style.css" />
+    </head>
+    <body>
+        <div id="container">
+            <header>
+                <div class="banniere">
+                    <div class="logo">
+                        <img
+                            title="le logo du site"
+                            src="images/logo.png"
+                            alt="logo du site"
+                        />
+                    </div>
+                    <div class="top">
+                        <div class="titre">
+                            <h1>Yuk'Essen</h1>
+                            <h2>La santé par l'assiette</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="formulaire">
+                    <form action="">
+                        <input
+                            class="loupe"
+                            type="text"
+                            title="rechercherProduit"
+                            name="rechercher"
+                            id="rechercher"
+                            placeholder="Code barre ..."
+                        />
+                        <button type="submit"><span>Rechercher</span></button>
+                    </form>
+                </div>
+            </header>
+            <main>
+                <section>
+                    <aside class="photo" aria-label="photo du produit">
+                        photo du produit
+                    </aside>
+                    <article>
+                        <div id="caracteristiques">
+                            <button class="accordion">
+                                Caractéristiques du produit
+                            </button>
+                            <div class="panel">
+                                <p>Lorem ipsum...</p>
+                            </div>
+                        </div>
+                        <div id="ingredients">
+                            <button class="accordion">Ingrédients</button>
+                            <div class="panel">
+                                <p>Lorem ipsum...</p>
+                            </div>
+                        </div>
+                        <div id="tableau-nutritionnel">
+                            <button class="accordion">
+                                Tableau nutritionnel
+                            </button>
+                            <div class="panel">
+                                <p>Lorem ipsum...</p>
+                            </div>
+                        </div>
+                    </article>
+                    <aside class="score" aria-label="image du nutriscore">
+                        nutriscore
+                    </aside>
+                </section>
+            </main>
+            <footer>
+                <ul class="liste">
+                    <li>
+                        <a class="mentions" href="#openModal"
+                            >Mentions légales</a
+                        >
+                        <div id="openModal" class="modalDialog">
+                            <div>
+                                <a href="#close" title="Close" class="close"
+                                    >X</a
+                                >
+                                <h2>Mentions légales</h2>
+                                <p>
+                                    Les mentions relatives à la propriété
+                                    intellectuelle et à l'hébergement du site.
+                                </p>
+                            </div>
+                            <a href="#close" title="Close" class="close">x</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="sommes-nous" href="#openModal2"
+                            >Qui sommes-nous ?</a
+                        >
+                        <div id="openModal2" class="modalDialog">
+                            <div>
+                                <a href="#close" title="Close" class="close"
+                                    >X</a
+                                >
+                                <h2>Qui sommes-nous ?</h2>
+                                <p>Étudiant en informatique.</p>
+                            </div>
+                            <a href="#close" title="Close" class="close">x</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="sommes-nous" href="#openModal3">Contact</a>
+                        <div id="openModal3" class="modalDialog">
+                            <div>
+                                <a href="#close" title="Close" class="close"
+                                    >X</a
+                                >
+                                <h2>Contact</h2>
+                                <p>
+                                    romain@email.com <br />
+                                    06 07 08 09 10
+                                </p>
+                            </div>
+                            <a href="#close" title="Close" class="close">x</a>
+                        </div>
+                    </li>
+                </ul>
+            </footer>
+        </div>
+        <script src="scripts/index.js"></script>
+    </body>
+</html>
