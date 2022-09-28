@@ -29,9 +29,14 @@
 /* Style the accordion panel. Note: hidden by default */
 .panel {
     padding: 0 18px;
-    background-color: transparent;
+    background-color: #6ed1d83d;
+
     display: none;
     overflow: hidden;
+    margin-bottom: 10px;
+    border: solid #6ed1d81c;
+    border-radius: 4px;
+
 }
 
 .accordion:after {
@@ -142,7 +147,7 @@ body {
 }
 
 
-button {
+#btn {
     display: inline-block;
     background-color: #046d12;
     border-radius: 10px;
@@ -157,14 +162,14 @@ button {
     margin: 3px;
 }
 
-button span {
+#btn span {
     cursor: pointer;
     display: inline-block;
     position: relative;
     transition: 0.5s;
 }
 
-button span:after {
+#btn span:after {
     content: "\00bb";
     position: absolute;
     opacity: 0;
@@ -173,15 +178,15 @@ button span:after {
     transition: 0.5s;
 }
 
-button:hover {
+#btn:hover {
     background-color: #4f7c55;
 }
 
-button:hover span {
+#btn:hover span {
     padding-right: 25px;
 }
 
-button:hover span:after {
+#btn:hover span:after {
     opacity: 1;
     right: 0;
 }
@@ -212,26 +217,33 @@ main {
 }
 
 footer {
-    margin: 3px;
+    /* margin: 3px; */
     position: absolute;
     width: 100%;
-    bottom: 25px;
-    height: 10px;
+    bottom: 2px;
+    justify-content: center;
+
 }
 
 
 #container {
-
-    min-width: 90%;
+    display: flex;
+    min-width: 100%;
     min-height: 100%;
+    flex-direction: column;
+    justify-content: center;
 
-    position: relative;
+
 
 }
 
 .liste {
     display: flex;
-    text-align: center
+    text-align: center;
+    margin: auto;
+    margin-bottom: 5px;
+
+    width: 50%;
 }
 
 .liste>li {
@@ -241,9 +253,11 @@ footer {
     border-radius: 10px;
     border: 1px solid #046d12;
     padding: 1px 10px 1px 10px;
-    width: 25%;
+    width: 17%;
     cursor: pointer;
 }
+
+
 
 
 
@@ -291,9 +305,9 @@ footer {
     text-decoration: none;
     font-weight: bold;
     -webkit-border-radius: 12px;
-    -moz-border-radius: 12px;
+
     border-radius: 12px;
-    -moz-box-shadow: 1px 1px 3px #000;
+
     -webkit-box-shadow: 1px 1px 3px #000;
     box-shadow: 1px 1px 3px #000;
 }
@@ -324,15 +338,35 @@ section {
 }
 
 .score {
+    display: flex;
     width: 20%;
-    margin: 1px;
+    margin: 10px;
     text-align: end;
     align-items: flex-end;
+    flex-direction: column;
+
 
 }
 
 article {
     width: 55%;
     margin: 1px;
+
+}
+
+#imgProduct {
+    max-width: -moz-fit-content;
+    max-width: fit-content;
+
+
+    /* border-radius: 3%;
+    border: thick double rgb(200, 212, 202); */
+
+}
+
+.allergen {
+    color: rgb(151, 99, 3);
+    font-weight: bold;
+
 
 }
