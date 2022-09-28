@@ -131,6 +131,7 @@ header {
 
 }
 
+
 @media (max-width: 576px) {
     #demande {
         display: flex;
@@ -191,26 +192,13 @@ h1 {
 
     }
 
-    h2 {
-        display: flex;
-        padding: 0px;
-        margin: 0px;
-        justify-content: end;
-        font-size: 24px;
-
-
-
-    }
-
 }
 
 
 h2 {
-    display: flex;
+    text-align: right;
     padding: 0px;
     margin: 0px;
-    justify-content: end;
-
     font-size: 1em;
 
 }
@@ -332,6 +320,24 @@ footer {
 
 }
 
+@media (min-width: 1090px) {
+
+    .liste>li {
+        display: inline;
+
+
+
+        border-radius: 10px;
+        border: 1px solid #046d12;
+        padding: 1px 10px 1px 7px;
+
+        font-size: 1.3em;
+    }
+
+
+
+}
+
 
 #container {
     display: flex;
@@ -346,11 +352,13 @@ footer {
 
 .liste {
     display: flex;
+
     text-align: center;
-    margin: auto;
+    margin: 25px;
     margin-bottom: 5px;
 
-    width: 50%;
+    width: 100%;
+    justify-content: center;
 }
 
 @media (max-width: 576px) {
@@ -541,6 +549,10 @@ section {
 
     }
 
+    #imgNova {
+        width: 56%;
+    }
+
 }
 
 #imgProduct {
@@ -551,6 +563,13 @@ section {
 article {
     width: 55%;
     margin: 1px;
+
+}
+
+@media (min-width: 1090px) {
+    article {
+        font-size: 1.4em;
+    }
 
 }
 

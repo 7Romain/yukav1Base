@@ -363,7 +363,3 @@ formulaire.addEventListener("submit", function (e) {
         alert("veuillez entrer un code barre valide");
     }
 });
-
-document.getElementByTagName("html").innerHTML = document
-    .getElementByTagName("html")
-    .innerHTML.replace("undefined", "?");
