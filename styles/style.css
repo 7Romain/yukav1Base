@@ -92,6 +92,8 @@ header {
 
 .banniere {
     display: flex;
+    height: 100%;
+
 }
 
 @media (max-width: 576px) {
@@ -99,20 +101,38 @@ header {
     .banniere {
         display: flex;
         flex-direction: column;
-        margin-bottom: -50px;
+        height: 100%;
+
+
+    }
+
+    #demande {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        padding-left: 18px;
+    }
+
+    .formulaire {
+        margin-top: 2%;
+        display: flex;
+        justify-content: center;
+
 
     }
 
     .logo {
         display: flex;
         justify-content: center;
-        height: 50%;
+        height: 75%;
     }
 
     .top {
         margin-left: 25px;
         display: flex;
         justify-content: center;
+        height: 20%;
 
     }
 
@@ -132,22 +152,6 @@ header {
 }
 
 
-@media (max-width: 576px) {
-    #demande {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        align-items: center;
-        padding-left: 18px;
-    }
-
-    .formulaire {
-        display: flex;
-        justify-content: center;
-
-    }
-
-}
 
 h1 {
     font-size: 4.5em;
@@ -165,7 +169,7 @@ h1 {
 @media (max-width: 576px) {
     h1 {
         font-size: 3.8em;
-        padding: 10px;
+        padding: 1px;
         margin: 0px;
         background: linear-gradient(to right, red 0%, orange 20%, green 40%, teal 63%, blue 75%, purple 100%);
         -webkit-background-clip: text;
@@ -226,12 +230,77 @@ body {
     border: 4px double #cccccc;
     color: #eeeeee;
     text-align: center;
-    font-size: 15px;
+    font-size: 17px;
     padding: 3px;
     width: 150px;
     transition: all 0.5s;
     cursor: pointer;
     margin: 3px;
+}
+
+@media (min-width: 1090px) {
+
+
+    #btn {
+        /* block-size: 70px; */
+        font-size: 1.3em;
+        width: 170px;
+
+
+    }
+
+    #rechercher {
+
+
+        font-size: 1.9em;
+        font-weight: bold;
+        min-width: 175px;
+
+
+
+    }
+
+    #demande {
+        width: 100%;
+
+        display: flex;
+        justify-content: center;
+
+        align-items: center;
+        padding-left: 18px;
+    }
+
+}
+
+@media (max-width: 576px) {
+
+    .formulaire {
+        block-size: 250%;
+    }
+
+    #demande {
+        width: 100%;
+    }
+
+    #btn {
+        block-size: 70px;
+        font-size: 1.3em;
+        width: 42.6%;
+
+
+    }
+
+    #rechercher {
+
+        font-size: 10pt;
+        font-size: 1.9em;
+        font-weight: bold;
+        min-width: 39%;
+        min-height: 25%;
+
+    }
+
+
 }
 
 #btn span {
@@ -277,9 +346,11 @@ body {
 }
 
 .loupe {
-    padding-left: 25px;
+
+
     background: url("/images/loupe.svg") no-repeat left;
     background-size: 20px;
+
 }
 
 main {
@@ -342,7 +413,7 @@ footer {
 #container {
     display: flex;
     min-width: 100%;
-    min-height: 100%;
+
     flex-direction: column;
     justify-content: center;
 
@@ -549,8 +620,17 @@ section {
 
     }
 
+
+    #imgNutri {
+        width: 40%;
+    }
+
     #imgNova {
-        width: 56%;
+        width: 20%;
+    }
+
+    #imgEcoscore {
+        width: 40%;
     }
 
 }
@@ -571,12 +651,23 @@ article {
         font-size: 1.4em;
     }
 
+    .accordion {
+        font-size: 1.1em;
+
+    }
+
 }
 
 @media (max-width: 576px) {
     article {
         width: 95%;
         margin: 1px;
+        font-size: 1.2em;
+
+    }
+
+    .accordion {
+        font-size: 1.1em;
 
     }
 

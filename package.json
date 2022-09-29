@@ -6,8 +6,8 @@
     "scripts": {
         "lint:md": "npx markdownlint **/*.md",
         "lint:scss": "npx stylelint scss/**/*.scss --formatter verbose",
-        "lint:ts": "npx eslint ts/**/*.ts",
-        "lint:css": "npx stylelint css/**/*.css --formatter verbose",
+        "lint:ts": "npx eslint scripts/*.ts",
+        "lint:css": "npx stylelint styles/*.css --formatter verbose",
         "lint:html": "npx htmlhint **/*.html --ignore coverage/**/*.html, hint-report/**/*.html",
         "checkPrettier": "npx prettier --check index.html"
     },

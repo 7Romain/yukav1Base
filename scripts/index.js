@@ -1,24 +1,7 @@
-const accordeon = document.getElementsByClassName("accordion");
-let i;
+import { acc } from "./accordeon";
 
-for (i = 0; i < accordeon.length; i++) {
-    accordeon[i].addEventListener("click", function () {
-        /* Toggle between adding and removing the "active" class,
-    to highlight the button that controls the panel */
-        this.classList.toggle("active");
-
-        /* Toggle between hiding and showing the active panel */
-        const panel = this.nextElementSibling;
-        if (panel.style.display === "block") {
-            panel.style.display = "none";
-        } else {
-            panel.style.display = "block";
-        }
-    });
-}
 const section = document.getElementById("section");
 const code = document.getElementById("rechercher");
-let resultat;
 const formulaire = document.getElementById("demande");
 const imgProduct = document.getElementById("imgProduct");
 const imgNutri = document.getElementById("imgNutri");
@@ -27,9 +10,13 @@ const imgEcoscore = document.getElementById("imgEcoscore");
 const ingredients = document.getElementById("listeIngredients");
 const caracteristiques = document.getElementById("carac");
 const tableNut = document.getElementById("tableNutri");
-
 const regex = /[\d]{8,13}/;
-
+let resultat;
+/**
+ *
+ *Affiche l'image du produit.
+ * @param {*} resultat = json du produit
+ */
 const afficherImageProduit = function (resultat) {
     if (resultat.products[0].image_small_url) {
         imgProduct.setAttribute("src", resultat.products[0].image_small_url);
@@ -38,6 +25,11 @@ const afficherImageProduit = function (resultat) {
     }
 };
 
+/**
+ *
+ *Affiche les image des scores Nova eco et nutri.
+ * @param {*} resultat = json  du produit
+ */
 const afficherScores = function (resultat) {
     switch (resultat.products[0]["nutriscore_grade"]) {
         case "a":
@@ -95,6 +87,10 @@ const afficherScores = function (resultat) {
     }
 };
 
+/**
+ *afficher la liste des ingrédients si elle existe.
+ * @param {*} resultat  = json du produit
+ */
 const afficherIngredients = function (resultat) {
     if (resultat.products[0]["ingredients_text_with_allergens_fr"]) {
         ingredients.innerHTML =
@@ -106,6 +102,11 @@ const afficherIngredients = function (resultat) {
     }
 };
 
+/**
+ * Test pour éviter d'afficher undefind.
+ * @param {*} valeur
+ * @return {*}
+ */
 const testValeur = function (valeur) {
     if (valeur !== undefined) {
         return valeur;
@@ -114,6 +115,11 @@ const testValeur = function (valeur) {
     }
 };
 
+/**
+ * Test pour éviter d'afficher undefind.
+ * @param {*} valeur
+ * @return {*}
+ */
 const testModificateur = function (valeur) {
     if (valeur === ">") {
         return ">";
@@ -124,6 +130,11 @@ const testModificateur = function (valeur) {
     }
 };
 
+/**
+ *Creer le tableau nutritionnel et le remplit si les info existent.
+ * @param {*} resultat = json du produit
+ *
+ */
 const afficherTableau = function (resultat) {
     tableNut.innerHTML = "";
     const tableauNutri = document.createElement("table");
@@ -145,117 +156,152 @@ const afficherTableau = function (resultat) {
     row1.appendChild(heading2);
     thead.appendChild(row1);
 
-    const row2 = document.createElement("tr");
-    const row2Data1 = document.createElement("td");
-    row2Data1.innerHTML = "Energie";
-    const row2Data2 = document.createElement("td");
-    row2Data2.innerHTML =
-        testValeur(resultat.products[0]["nutriments"]["energy-kj"]) + " kj";
-    row2.appendChild(row2Data1);
-    row2.appendChild(row2Data2);
-    tbody.appendChild(row2);
+    if (resultat.products[0]["nutriments"]["energy-kj"]) {
+        const row2 = document.createElement("tr");
+        const row2Data1 = document.createElement("td");
+        row2Data1.innerHTML = "Energie";
+        const row2Data2 = document.createElement("td");
+        row2Data2.innerHTML =
+            testValeur(resultat.products[0]["nutriments"]["energy-kj"]) + " kj";
+        row2.appendChild(row2Data1);
+        row2.appendChild(row2Data2);
+        tbody.appendChild(row2);
+    }
 
-    const row3 = document.createElement("tr");
-    const row3Data1 = document.createElement("td");
-    row3Data1.innerHTML = "Matières grasses";
-    const row3Data2 = document.createElement("td");
-    row3Data2.innerHTML =
-        testValeur(resultat.products[0]["nutriments"]["fat_100g"]) + " g";
-    row3.appendChild(row3Data1);
-    row3.appendChild(row3Data2);
-    tbody.appendChild(row3);
+    if (resultat.products[0]["nutriments"]["fat_100g"]) {
+        const row3 = document.createElement("tr");
+        const row3Data1 = document.createElement("td");
+        row3Data1.innerHTML = "Matières grasses";
+        const row3Data2 = document.createElement("td");
+        row3Data2.innerHTML =
+            testValeur(resultat.products[0]["nutriments"]["fat_100g"]) + " g";
+        row3.appendChild(row3Data1);
+        row3.appendChild(row3Data2);
+        tbody.appendChild(row3);
+    }
 
-    const row4 = document.createElement("tr");
-    const row4Data1 = document.createElement("td");
-    row4Data1.innerHTML = "Acides gras saturés";
-    const row4Data2 = document.createElement("td");
-    row4Data2.innerHTML =
-        testValeur(resultat.products[0]["nutriments"]["saturated-fat_100g"]) +
-        " g";
-    row4.appendChild(row4Data1);
-    row4.appendChild(row4Data2);
-    tbody.appendChild(row4);
+    if (resultat.products[0]["nutriments"]["saturated-fat_100g"]) {
+        const row4 = document.createElement("tr");
+        const row4Data1 = document.createElement("td");
+        row4Data1.innerHTML = "Acides gras saturés";
+        const row4Data2 = document.createElement("td");
+        row4Data2.innerHTML =
+            testValeur(
+                resultat.products[0]["nutriments"]["saturated-fat_100g"]
+            ) + " g";
+        row4.appendChild(row4Data1);
+        row4.appendChild(row4Data2);
+        tbody.appendChild(row4);
+    }
 
-    const row5 = document.createElement("tr");
-    const row5Data1 = document.createElement("td");
-    row5Data1.innerHTML = "Glucides";
-    const row5Data2 = document.createElement("td");
-    row5Data2.innerHTML =
-        testValeur(resultat.products[0]["nutriments"]["carbohydrates_100g"]) +
-        " g";
-    row5.appendChild(row5Data1);
-    row5.appendChild(row5Data2);
-    tbody.appendChild(row5);
+    if (resultat.products[0]["nutriments"]["carbohydrates_100g"]) {
+        const row5 = document.createElement("tr");
+        const row5Data1 = document.createElement("td");
+        row5Data1.innerHTML = "Glucides";
+        const row5Data2 = document.createElement("td");
+        row5Data2.innerHTML =
+            testValeur(
+                resultat.products[0]["nutriments"]["carbohydrates_100g"]
+            ) + " g";
+        row5.appendChild(row5Data1);
+        row5.appendChild(row5Data2);
+        tbody.appendChild(row5);
+    }
 
-    const row6 = document.createElement("tr");
-    const row6Data1 = document.createElement("td");
-    row6Data1.innerHTML = "Sucres";
-    const row6Data2 = document.createElement("td");
-    row6Data2.innerHTML =
-        testValeur(resultat.products[0]["nutriments"]["sugars_100g"]) + " g";
-    row6.appendChild(row6Data1);
-    row6.appendChild(row6Data2);
-    tbody.appendChild(row6);
+    if (resultat.products[0]["nutriments"]["sugars_100g"]) {
+        const row6 = document.createElement("tr");
+        const row6Data1 = document.createElement("td");
+        row6Data1.innerHTML = "Sucres";
+        const row6Data2 = document.createElement("td");
+        row6Data2.innerHTML =
+            testValeur(resultat.products[0]["nutriments"]["sugars_100g"]) +
+            " g";
+        row6.appendChild(row6Data1);
+        row6.appendChild(row6Data2);
+        tbody.appendChild(row6);
+    }
 
-    const row7 = document.createElement("tr");
-    const row7Data1 = document.createElement("td");
-    row7Data1.innerHTML = "Fibres alimentaires";
-    const row7Data2 = document.createElement("td");
-    row7Data2.innerHTML =
-        testModificateur(resultat.products[0]["nutriments"]["fiber_modifier"]) +
-        " " +
-        testValeur(resultat.products[0]["nutriments"]["fiber_100g"]) +
-        " g";
-    row7.appendChild(row7Data1);
-    row7.appendChild(row7Data2);
-    tbody.appendChild(row7);
+    if (resultat.products[0]["nutriments"]["fiber_modifier"]) {
+        const row7 = document.createElement("tr");
+        const row7Data1 = document.createElement("td");
+        row7Data1.innerHTML = "Fibres alimentaires";
+        const row7Data2 = document.createElement("td");
+        row7Data2.innerHTML =
+            testModificateur(
+                resultat.products[0]["nutriments"]["fiber_modifier"]
+            ) +
+            " " +
+            testValeur(resultat.products[0]["nutriments"]["fiber_100g"]) +
+            " g";
+        row7.appendChild(row7Data1);
+        row7.appendChild(row7Data2);
+        tbody.appendChild(row7);
+    }
 
-    const row8 = document.createElement("tr");
-    const row8Data1 = document.createElement("td");
-    row8Data1.innerHTML = "Protéines";
-    const row8Data2 = document.createElement("td");
-    row8Data2.innerHTML =
-        testValeur(resultat.products[0]["nutriments"]["proteins_100g"]) + " g";
-    row8.appendChild(row8Data1);
-    row8.appendChild(row8Data2);
-    tbody.appendChild(row8);
+    if (resultat.products[0]["nutriments"]["proteins_100g"]) {
+        const row8 = document.createElement("tr");
+        const row8Data1 = document.createElement("td");
+        row8Data1.innerHTML = "Protéines";
+        const row8Data2 = document.createElement("td");
+        row8Data2.innerHTML =
+            testValeur(resultat.products[0]["nutriments"]["proteins_100g"]) +
+            " g";
+        row8.appendChild(row8Data1);
+        row8.appendChild(row8Data2);
+        tbody.appendChild(row8);
+    }
 
-    const row9 = document.createElement("tr");
-    const row9Data1 = document.createElement("td");
-    row9Data1.innerHTML = "Sel";
-    const row9Data2 = document.createElement("td");
-    row9Data2.innerHTML =
-        testValeur(resultat.products[0]["nutriments"]["salt_100g"]) + " g";
-    row9.appendChild(row9Data1);
-    row9.appendChild(row9Data2);
-    tbody.appendChild(row9);
+    if (resultat.products[0]["nutriments"]["salt_100g"]) {
+        const row9 = document.createElement("tr");
+        const row9Data1 = document.createElement("td");
+        row9Data1.innerHTML = "Sel";
+        const row9Data2 = document.createElement("td");
+        row9Data2.innerHTML =
+            testValeur(resultat.products[0]["nutriments"]["salt_100g"]) + " g";
+        row9.appendChild(row9Data1);
+        row9.appendChild(row9Data2);
+        tbody.appendChild(row9);
+    }
 
-    const row10 = document.createElement("tr");
-    const row10Data1 = document.createElement("td");
-    row10Data1.innerHTML = "Alcool";
-    const row10Data2 = document.createElement("td");
-    row10Data2.innerHTML =
-        testValeur(resultat.products[0]["nutriments"]["alcohol"]) + " g";
-    row10.appendChild(row10Data1);
-    row10.appendChild(row10Data2);
-    tbody.appendChild(row10);
+    if (resultat.products[0]["nutriments"]["alcohol"]) {
+        const row10 = document.createElement("tr");
+        const row10Data1 = document.createElement("td");
+        row10Data1.innerHTML = "Alcool";
+        const row10Data2 = document.createElement("td");
+        row10Data2.innerHTML =
+            testValeur(resultat.products[0]["nutriments"]["alcohol"]) + " g";
+        row10.appendChild(row10Data1);
+        row10.appendChild(row10Data2);
+        tbody.appendChild(row10);
+    }
 
-    const row11 = document.createElement("tr");
-    const row11Data1 = document.createElement("td");
-    row11Data1.innerHTML =
-        "Fruits‚ légumes‚ noix et huiles de colza‚ noix et olive (estimation par analyse de la liste des ingrédients)";
-    const row11Data2 = document.createElement("td");
-    row11Data2.innerHTML =
-        testValeur(
-            resultat.products[0]["nutriments"][
-                "fruits-vegetables-nuts-estimate-from-ingredients_100g"
-            ]
-        ) + " g";
-    row11.appendChild(row11Data1);
-    row11.appendChild(row11Data2);
-    tbody.appendChild(row11);
+    if (
+        resultat.products[0]["nutriments"][
+            "fruits-vegetables-nuts-estimate-from-ingredients_100g"
+        ]
+    ) {
+        const row11 = document.createElement("tr");
+        const row11Data1 = document.createElement("td");
+        row11Data1.innerHTML =
+            "Fruits‚ légumes‚ noix et huiles de colza‚ noix et olive (estimation par analyse de la liste des ingrédients)";
+        const row11Data2 = document.createElement("td");
+        row11Data2.innerHTML =
+            testValeur(
+                resultat.products[0]["nutriments"][
+                    "fruits-vegetables-nuts-estimate-from-ingredients_100g"
+                ]
+            ) + " g";
+        row11.appendChild(row11Data1);
+        row11.appendChild(row11Data2);
+        tbody.appendChild(row11);
+    }
 };
 
+/**
+ *Creer le tableau nutritionnel et le remplit si les info existent.
+ * @param {*} resultat = json du produit
+ *
+ */
 const afficherCaracteristiques = function (resultat) {
     let texte = "";
     if (resultat.products[0]["product_name_fr"]) {
@@ -326,6 +372,11 @@ const afficherCaracteristiques = function (resultat) {
     caracteristiques.innerText = texte;
 };
 
+/**
+ *
+ * Lance toute les fonctions d'affichage des données.
+ * @param {*} resultat  = json du produit
+ */
 const afficher = function (resultat) {
     afficherImageProduit(resultat);
     afficherScores(resultat);
@@ -333,6 +384,11 @@ const afficher = function (resultat) {
     afficherCaracteristiques(resultat);
     afficherTableau(resultat);
 };
+
+/**
+ * Ajoute un écouteur sur le bouton rechercher qui lance la recherche et
+ * rend visible la fiche produit.
+ */
 
 formulaire.addEventListener("submit", function (e) {
     if (regex.test(code.value)) {
