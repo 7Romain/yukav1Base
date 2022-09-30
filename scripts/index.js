@@ -325,69 +325,81 @@ const afficherTableau = function (resultat) {
 const afficherCaracteristiques = function (resultat) {
     let texte = "";
     if (resultat.products[0]["product_name_fr"]) {
-        texte += "<span class= 'gras' >Nom : </span>" + resultat.products[0]["product_name_fr"] + "\n\n";
+        texte +=
+            "<span class= 'gras' >Nom : </span>" +
+            resultat.products[0]["product_name_fr"] +
+            "<br /><br />";
     } else if (resultat.products[0]["product_name_en"]) {
         texte +=
             "<span class= 'gras' >Nom Générique : </span>" +
             resultat.products[0]["product_name_en"] +
-            "\n\n";
+            "<br /><br />";
     } else {
-        texte += "Nom inconnu" + "\n";
+        texte += "Nom inconnu" + "<br /><br />";
     }
 
     if (resultat.products[0]["brands_imported"]) {
         texte +=
-            "<span class= 'gras' >Marque : </span>" + resultat.products[0]["brands_imported"] + "\n" + "\n";
+            "<span class= 'gras' >Marque : </span>" +
+            resultat.products[0]["brands_imported"] +
+            "<br /><br />";
     } else if (resultat.products[0]["brands"]) {
-        texte += "<span class= 'gras' >Marque : </span>" + resultat.products[0]["brands"] + "\n" + "\n";
+        texte +=
+            "<span class= 'gras' >Marque : </span>" +
+            resultat.products[0]["brands"] +
+            "<br /><br />";
     }
 
     if (resultat.products[0]["quantity"]) {
-        texte += "<span class= 'gras' >Quantité : </span>" + resultat.products[0]["quantity"] + "\n" + "\n";
+        texte +=
+            "<span class= 'gras' >Quantité : </span>" +
+            resultat.products[0]["quantity"] +
+            "<br /><br />";
     }
 
     if (resultat.products[0]["packaging_text_fr"]) {
         texte +=
             "<span class= 'gras' >Conditionnement : </span>" +
             resultat.products[0]["packaging_text_fr"] +
-            "\n" +
-            "\n";
+            "<br /><br />";
     }
 
     if (resultat.products[0]["categories_old"]) {
         texte +=
             "<span class= 'gras' >Catégories : </span>" +
             resultat.products[0]["categories_old"] +
-            "\n" +
-            "\n";
+            "<br /><br />";
     }
 
     if (resultat.products[0]["preparation_fr"]) {
         texte +=
             "<span class= 'gras' >Préparation : </span>" +
             resultat.products[0]["preparation_fr"] +
-            "\n" +
-            "\n";
+            "<br /><br />";
     }
 
     if (resultat.products[0]["traces_imported"]) {
         texte +=
-            "<span class= 'gras' >Traces : </span>" + resultat.products[0]["traces_imported"] + "\n" + "\n";
+            "<span class= 'gras' >Traces : </span>" +
+            resultat.products[0]["traces_imported"] +
+            "<br /><br />";
     }
 
     if (resultat.products[0]["stores"]) {
-        texte += "<span class= 'gras' >Magasins : </span>" + resultat.products[0]["stores"] + "\n" + "\n";
+        texte +=
+            "<span class= 'gras' >Magasins : </span>" +
+            resultat.products[0]["stores"] +
+            "<br /><br />";
     }
 
     if (resultat.products[0]["conservation_conditions_fr"]) {
         texte +=
             "<span class= 'gras' >Conservation : </span>" +
             resultat.products[0]["conservation_conditions_fr"] +
-            "\n" +
-            "\n";
+            "<br /><br />";
     }
 
-    caracteristiques.innerText = texte;
+    caracteristiques.innerHTML = texte;
 };
 
 /**
