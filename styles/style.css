@@ -184,7 +184,7 @@ h1 {
 
 @media (min-width: 1090px) {
     h1 {
-        font-size: 10.8em;
+        font-size: 9.4em;
         padding: 10px;
         margin: 0px;
         background: linear-gradient(to right, red 0%, orange 20%, green 40%, teal 63%, blue 75%, purple 100%);
@@ -669,6 +669,10 @@ article {
     .accordion {
         font-size: 1.1em;
 
+    }
+
+    #imgProduct {
+        width: 30%;
     }
 
 }

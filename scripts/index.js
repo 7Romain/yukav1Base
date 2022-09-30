@@ -324,14 +324,12 @@ const afficherTableau = function (resultat) {
 const afficherCaracteristiques = function (resultat) {
     let texte = "";
     if (resultat.products[0]["product_name_fr"]) {
-        texte +=
-            "Nom : " + resultat.products[0]["product_name_fr"] + "\n" + "\n";
+        texte += "Nom : " + resultat.products[0]["product_name_fr"] + "\n\n";
     } else if (resultat.products[0]["product_name_en"]) {
         texte +=
             "Nom Générique : " +
             resultat.products[0]["product_name_en"] +
-            "\n" +
-            "\n";
+            "\n\n";
     } else {
         texte += "Nom inconnu" + "\n";
     }
