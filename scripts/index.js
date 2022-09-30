@@ -1,3 +1,4 @@
+/* eslint-disable dot-notation */
 const acc = function () {
     const accordeon = document.getElementsByClassName("accordion");
     for (let i = 0; i < accordeon.length; i++) {
