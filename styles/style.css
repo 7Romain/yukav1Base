@@ -674,7 +674,11 @@ article {
     }
 
     #imgProduct {
-        width: 30%;
+
+        max-width: 40%;
+        display: flex;
+        justify-content: center;
+        margin: auto;
     }
 
 }
