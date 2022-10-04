@@ -636,6 +636,8 @@ section {
 }
 
 #imgProduct {
+    border-radius: 15px;
+    border: solid 2px rgb(3, 83, 34);
     width: 100%;
 }
 
