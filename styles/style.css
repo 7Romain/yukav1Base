@@ -592,7 +592,7 @@ section {
     width: 20%;
     margin: 0px 15px 25px 25px;
 
-    align-items: flex-end;
+    align-items: center;
     flex-direction: column;
 
 }
@@ -601,7 +601,19 @@ section {
     margin-bottom: 10px;
     width: 100%;
 
+
 }
+
+#imgNova {
+    width: 55%;
+
+}
+
+.cacher {
+    display: none;
+}
+
+
 
 @media (max-width: 576px) {
     .score {
@@ -727,12 +739,6 @@ td {
 }
 
 
-tbody tr,
-td,
-th {
-    border: 1px solid #ddd;
-
-}
 
 tbody tr:nth-child(even) {
     background-color: #f3f3f36e;
