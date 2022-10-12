@@ -68,6 +68,8 @@ const afficher = function (resultat) {
 
 formulaire.addEventListener("submit", function (e) {
     section.classList.add("cacher");
+    section.classList.remove("sectionVisible");
+
     if (regex.test(code.value)) {
         e.preventDefault();
 
@@ -86,10 +88,9 @@ formulaire.addEventListener("submit", function (e) {
                         "Le produit n'est pas présent dans la base de données"
                     );
                 } else {
+                    afficher(resultat);
                     section.classList.remove("cacher");
                     section.classList.add("sectionVisible");
-                    afficher(resultat);
-                    console.log("ok");
                 }
             })
             .catch(function (err) {
