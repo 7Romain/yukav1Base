@@ -1,171 +1,124 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Yuk'Essen V1</title>
-        <link rel="stylesheet" href="styles/style.css" />
-    </head>
-    <body>
-        <div id="container">
-            <header>
-                <div class="banniere">
-                    <div class="logo">
-                        <img
-                            title="le logo du site"
-                            src="images/logo.png"
-                            alt="logo du site"
-                        />
-                    </div>
-                    <div class="top" width="98%">
-                        <div class="titre">
-                            <h1>Yuk'Essen</h1>
-                            <h2>La santé par l'assiette</h2>
-                        </div>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yuk'Essen V1.1</title>
+    <link rel="stylesheet" href="styles/style.css" />
+</head>
+
+<body>
+    <div id="container">
+        <header>
+            <div class="banniere">
+                <div class="logo">
+                    <img title="le logo du site" src="images/logo.png" alt="logo du site" />
+                </div>
+                <div class="top" width="98%">
+                    <div class="titre">
+                        <h1>Yuk'Essen</h1>
+                        <h2>La santé par l'assiette</h2>
                     </div>
                 </div>
-                <div class="formulaire">
-                    <form id="demande">
-                        <input
-                            minlength="8"
-                            maxlength="13"
-                            class="loupe"
-                            type="text"
-                            requiered="required"
-                            title="Code Barre"
-                            name="rechercher"
-                            id="rechercher"
-                            placeholder="Code barre ..."
-                            pattern="[0-9]{8,13}"
-                        />
-                        <button type="submit" id="btn">
-                            <span>Rechercher</span>
+            </div>
+            <div class="formulaire">
+                <form id="demande">
+                    <input minlength="8" maxlength="13" class="loupe" type="text" requiered="required"
+                        title="Code Barre" name="rechercher" id="rechercher" placeholder="Code barre ..."
+                        pattern="[0-9]{8,13}" />
+                    <button type="submit" id="btn">
+                        <span>Rechercher</span>
+                    </button>
+                </form>
+            </div>
+        </header>
+        <main>
+            <section id="section">
+                <aside class="photo" aria-label="photo du produit">
+                    <img id="imgProduct" src="/images/vide.png" alt="image du produit" title="photo du produit"
+                        width="80%" />
+                </aside>
+                <article>
+                    <div id="caracteristiques">
+                        <button class="accordion">
+                            Caractéristiques du produit
                         </button>
-                    </form>
-                </div>
-            </header>
-            <main>
-                <section id="section">
-                    <aside class="photo" aria-label="photo du produit">
-                        <img
-                            id="imgProduct"
-                            src="/images/vide.png"
-                            alt="image du produit"
-                            title="photo du produit"
-                            width="80%"
-                        />
-                    </aside>
-                    <article>
-                        <div id="caracteristiques">
-                            <button class="accordion">
-                                Caractéristiques du produit
-                            </button>
-                            <div class="panel">
-                                <p id="carac"></p>
-                            </div>
+                        <div class="panel">
+                            <p id="carac"></p>
                         </div>
-                        <div id="ingredients">
-                            <button class="accordion">
-                                Ingrédients dont
-                                <span class="allergen">allergènes</span>
-                            </button>
-                            <div class="panel">
-                                <p id="listeIngredients"></p>
-                            </div>
+                    </div>
+                    <div id="ingredients">
+                        <button class="accordion">
+                            Ingrédients dont
+                            <span class="allergen">allergènes</span>
+                        </button>
+                        <div class="panel">
+                            <p id="listeIngredients"></p>
                         </div>
-                        <div id="tableau-nutritionnel">
-                            <button class="accordion">
-                                Tableau nutritionnel
-                            </button>
-                            <div class="panel">
-                                <div id="tableNutri"></div>
-                            </div>
+                    </div>
+                    <div id="tableau-nutritionnel">
+                        <button class="accordion">
+                            Tableau nutritionnel
+                        </button>
+                        <div class="panel">
+                            <div id="tableNutri"></div>
                         </div>
-                    </article>
-                    <aside class="score" aria-label="image du nutriscore">
-                        <img
-                            id="imgNutri"
-                            src="/images/vide.png"
-                            alt="image du nutriscore"
-                            title="nutriscore"
-                            width="80%"
-                        />
-                        <img
-                            id="imgEcoscore"
-                            src="/images/vide.png"
-                            alt="image du Ecoscore"
-                            title="Ecoscore"
-                            width="80%"
-                        />
-                        <img
-                            id="imgNova"
-                            src="/images/vide.png"
-                            alt="image du NovaScore"
-                            title="NovaScore"
-                            width="30%"
-                        />
-                    </aside>
-                </section>
-            </main>
-            <footer>
-                <ul class="liste">
-                    <li>
-                        <a
-                            title="mentions legales"
-                            class="mentions"
-                            href="#openModal"
-                            >Mentions légales</a
-                        >
-                        <div id="openModal" class="modalDialog">
-                            <div>
-                                <a href="#close" title="Close" class="close"
-                                    >X</a
-                                >
-                                <h2>Mentions légales</h2>
-                                <p>
-                                    Les mentions relatives à la propriété
-                                    intellectuelle et à l'hébergement du site.
-                                </p>
-                            </div>
+                    </div>
+                </article>
+                <aside class="score" aria-label="image du nutriscore">
+                    <img id="imgNutri" src="/images/vide.png" alt="image du nutriscore" title="nutriscore"
+                        width="80%" />
+                    <img id="imgEcoscore" src="/images/vide.png" alt="image du Ecoscore" title="Ecoscore" width="80%" />
+                    <img id="imgNova" src="/images/vide.png" alt="image du NovaScore" title="NovaScore" width="30%" />
+                </aside>
+            </section>
+        </main>
+        <footer>
+            <ul class="liste">
+                <li>
+                    <a title="mentions legales" class="mentions" href="#openModal">Mentions légales</a>
+                    <div id="openModal" class="modalDialog">
+                        <div>
+                            <a href="#close" title="Close" class="close">X</a>
+                            <h2>Mentions légales</h2>
+                            <p>
+                                Les mentions relatives à la propriété
+                                intellectuelle et à l'hébergement du site.
+                            </p>
                         </div>
-                    </li>
-                    <li>
-                        <a title="about" class="sommes-nous" href="#openModal2"
-                            >Qui sommes-nous ?</a
-                        >
-                        <div id="openModal2" class="modalDialog">
-                            <div>
-                                <a href="#close" title="Close" class="close"
-                                    >X</a
-                                >
-                                <h2>Qui sommes-nous ?</h2>
-                                <p>Étudiant en informatique.</p>
-                            </div>
+                    </div>
+                </li>
+                <li>
+                    <a title="about" class="sommes-nous" href="#openModal2">Qui sommes-nous ?</a>
+                    <div id="openModal2" class="modalDialog">
+                        <div>
+                            <a href="#close" title="Close" class="close">X</a>
+                            <h2>Qui sommes-nous ?</h2>
+                            <p>Étudiant en informatique.</p>
                         </div>
-                    </li>
-                    <li>
-                        <a title="about" class="sommes-nous" href="#openModal3"
-                            >Contact</a
-                        >
-                        <div id="openModal3" class="modalDialog">
-                            <div>
-                                <a href="#close" title="Close" class="close"
-                                    >X</a
-                                >
-                                <h2>Contact</h2>
-                                <p>
-                                    romain@email.com <br />
-                                    06 07 08 09 10
-                                </p>
-                            </div>
+                    </div>
+                </li>
+                <li>
+                    <a title="about" class="sommes-nous" href="#openModal3">Contact</a>
+                    <div id="openModal3" class="modalDialog">
+                        <div>
+                            <a href="#close" title="Close" class="close">X</a>
+                            <h2>Contact</h2>
+                            <p>
+                                romain@email.com <br />
+                                06 07 08 09 10
+                            </p>
                         </div>
-                    </li>
-                </ul>
-            </footer>
-        </div>
-        <script type="module">
-            import "./scripts/index.js";
-        </script>
-    </body>
+                    </div>
+                </li>
+            </ul>
+        </footer>
+    </div>
+    <script type="module">
+        import "./scripts/index.js";
+    </script>
+</body>
+
 </html>
